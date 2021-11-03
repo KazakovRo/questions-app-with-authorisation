@@ -7,7 +7,7 @@ export class Question {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => Response.json())
+      .then(response => response.json())
       .then(response => {
         console.log(response)
       })
