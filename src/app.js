@@ -1,3 +1,4 @@
+import { Question } from './questions'
 import { isValid } from './utils'
 import './style.css'
 
@@ -23,10 +24,10 @@ function submitFormHandler(e) {
 
     // Server request
     console.log('quest', question)
-    // Server request
-
-    input.value = ''
-    input.className = ''
-    submitBtn.disabled = false
+    Question.create(question).then(() => {
+      input.value = ''
+      input.className = ''
+      submitBtn.disabled = false
+    })
   }
 }
