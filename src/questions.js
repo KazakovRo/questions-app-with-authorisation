@@ -9,7 +9,20 @@ export class Question {
     })
       .then(response => response.json())
       .then(response => {
-        console.log(response)
+        question.id = response.name
+        return question
       })
+      .then(addToLocalStorage)
   }
+}
+
+function addToLocalStorage(question) {
+  const all = getLocalQuestion()
+  console.log(all)
+  all.push(question)
+  localStorage.setItem('questions', JSON.stringify(all))
+}
+
+function getLocalQuestion() {
+  return JSON.parse(localStorage.getItem('questions') || '[]')
 }
